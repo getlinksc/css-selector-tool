@@ -13,7 +13,7 @@ import * as cheerio from 'cheerio';
 import { PlusCircledIcon, MinusCircledIcon} from "@radix-ui/react-icons"
 import {Button} from "@/components/ui/button";
 
-export function DataBuilder({ html, setHtml, defaultLayout = [265, 440, 655]}) {
+export function DataBuilder({ html, setHtml, defaultLayout = [265, 440, 755]}) {
     const [selectors, setSelectors] = useState([
         {"key": "title", "selector": ""}
     ]);
