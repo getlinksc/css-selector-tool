@@ -6,14 +6,19 @@ const PROXY_API_KEY = process.env.PROXY_API_KEY;
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 
 async function sendAnalytics(req){
+    let body = req.body;
+    body["referrer"] = req.headers["referer"]
     const config = {
-        headers: req.headers,
+        headers: {
+            "User-Agent": req.headers["user-agent"],
+            "X-Forwarded-For" : req.headers["x-forwarded-for"] ? req.headers["x-forwarded-for"] : "",
+        },
         body: JSON.stringify({
             "name": "pageview",
             "url": process.env.NEXT_PUBLIC_URL,
             "domain": `${process.env.NEXT_PUBLIC_DOMAIN}`,
             "props": {
-                "body": req.body
+                "body": body
             }
         }),
         "method": "post"
