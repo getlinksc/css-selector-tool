@@ -27,6 +27,7 @@ COPY styles ./styles
 COPY jsconfig.json .
 COPY postcss.config.js .
 COPY tailwind.config.js .
+COPY next.config.js .
 
 
 # Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry
