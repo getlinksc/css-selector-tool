@@ -48,7 +48,7 @@ export default async function handler(req, res) {
             const resp = await fetch(`${process.env.PROXY_ENDPOINT}/v1/request`, config);
 
             // analytics to prevent abuse
-            await sendAnalytics(req, res);
+            await sendAnalytics(req);
 
             const html = await resp.text();
             const $ = cheerio.load(html);

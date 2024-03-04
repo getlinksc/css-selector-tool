@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "Link.sc",
     description:
-        "Open source tool/IDE for testing and working with CSS Selector.",
+        "Open source developer tool/IDE for testing and working with CSS Selector.",
     mainNav: [
         {
             title: "Home",
