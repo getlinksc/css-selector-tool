@@ -15,6 +15,6 @@ export const siteConfig = {
     links: {
         twitter: "https://twitter.com/LinkScrape",
         github: "https://github.com/getlinksc",
-        docs: "https://docs.lin/getlinksc",
+        picker: "https://tools.link.sc/picker",
     },
 }

@@ -39,6 +39,7 @@ This project as an experiment to see to speed up testing and parsing data from w
 - [x] ~Extra data to tables~
 - [x] Dark mode
 - [ ] Automatically Generate code
+- [ ] Build a better UI
 
 ## Known Issues
 
