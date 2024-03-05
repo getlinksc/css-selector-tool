@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { ToastAction } from "@/components/ui/toast";
 import { Card, CardContent } from "@/components/ui/card";
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 import { useToast } from "@/components/ui/use-toast";
 import {useState} from "react";
 
@@ -18,8 +20,14 @@ const fetchApiEndpoint = "/api/request";
 export function RequestCard({ html, setHtml, defaultLayout = [265, 440, 655]}) {
     const [url, setUrl] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
+    const [isJavascript, setIsJavascript] = useState(false)
     const { toast } = useToast()
 
+
+    const toggleJavascript = (e) => {
+        console.log(`javascript toggled: ${isJavascript}`)
+        setIsJavascript(!isJavascript);
+    }
     const handleiframeLoad = (e) => {
         console.log(`iframe is loading`);
         if (e.querySelector(".selectorgadget")){
@@ -34,13 +42,17 @@ export function RequestCard({ html, setHtml, defaultLayout = [265, 440, 655]}) {
             console.log(`fetch was called url ${url}`)
             setIsFetching(true)
 
+            const payload = {"url": new URL(url)}
+            if (isJavascript){
+                payload["render_js"] = true;
+            }
             const config = {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({"url": new URL(url)})
+                body: JSON.stringify(payload)
             };
 
             fetch(fetchApiEndpoint, config).then((response) => response.text())
@@ -100,6 +112,11 @@ export function RequestCard({ html, setHtml, defaultLayout = [265, 440, 655]}) {
                                         <ReloadIcon className="mr-2 h-4 w-4 animate-spin"/> : <>Fetch</>
                                 }
                             </Button>
+
+                        </div>
+                        <div className="flex space-x-2 p-2">
+                            <Switch id="javascript-mode" checked={isJavascript} onClick={() => toggleJavascript()}/>
+                            <Label htmlFor="javascript-mode">Javascript Enabled</Label>
                         </div>
                     </CardContent>
                     <ScrollArea className="h-screen">

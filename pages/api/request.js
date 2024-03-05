@@ -41,6 +41,7 @@ export default async function handler(req, res) {
 
             payload["user-agent"] = USER_AGENT;
             payload["method"] = "GET";
+            payload["render_js"] = true;
 
             const config = {
                 "body": JSON.stringify(payload),
