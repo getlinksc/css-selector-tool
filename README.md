@@ -10,6 +10,12 @@ An low-code application for testing and experimenting with css selectors. A basi
 
 This project as an experiment to see to speed up testing and parsing data from websites.
 
+## Demo
+
+![demo of how to scrape data from ebay](images/demo.gif)
+
+You can also try out the tool at [tools.link.sc](https://tools.link.sc)
+
 ## Note on Performance
 
 > **Warning**
