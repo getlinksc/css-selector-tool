@@ -23,6 +23,7 @@ You can also try out the tool at [tools.link.sc](https://tools.link.sc)
 > **Expect some weird UI glitches when **.
 > If you see something broken, you can ping me [@LinkScrape](https://twitter.com/LinkScrape).
 
+
 ## Features
 
 - Low code
@@ -55,6 +56,7 @@ A list of things not working right now:
 2. ~Might not work for all websites~
 3. ~CSS Selector tool is not perfect~
 4. ~Difficult to extract link~
+5. ~Javascript rendering does not always work~
 
 ## Running Locally
 
