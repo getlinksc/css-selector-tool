@@ -45,6 +45,7 @@ You can also try out the tool at [tools.link.sc](https://tools.link.sc)
 - [x] HTML Parser
 - [x] Extra data to tables
 - [x] Dark mode
+- [x] Javascript Toggle
 - [ ] Automatically Generate code
 - [ ] Build a better UI
 
