@@ -30,9 +30,10 @@ async function sendAnalytics(req){
 export default async function handler(req, res) {
 
     if (req.method === 'POST') {
-
         const body = req.body;
         console.log(`got post request with body ${JSON.stringify(body)}`)
+
+        let resp = null;
 
         // This is where the proxy request is used
         if (process.env.PROXY_ENDPOINT){
@@ -50,21 +51,31 @@ export default async function handler(req, res) {
                 "method": "post"
             }
 
-            const resp = await fetch(`${process.env.PROXY_ENDPOINT}/v1/request`, config);
-
             // analytics to prevent abuse
             await sendAnalytics(req);
 
-            const html = await resp.text();
-            const $ = cheerio.load(html);
-            // console.log(`appending selector js :${SELECTOR_JS}`)
-            $('head').prepend(SELECTOR_JS)
-            console.log(`sending back html ${$.html().length}`)
-            res.status(200).send($.html())
+            resp = await fetch(`${process.env.PROXY_ENDPOINT}/v1/request`, config);
         } else {
-            // make the request directly on server side
-            res.status(200).json({ message: 'Hello from Next.js!' })
+            // without proxy
+            const config = {
+                "headers": {
+                    "user-agent": "application/json"
+                },
+                "method": "get"
+            }
+            resp = await fetch(body.url, config);
         }
+
+        const html = await resp.text();
+
+        // add in the query selector
+        const $ = cheerio.load(html);
+        // console.log(`appending selector js :${SELECTOR_JS}`)
+        $('head').prepend(SELECTOR_JS)
+
+        console.log(`sending back html ${$.html().length}`)
+
+        res.status(200).send($.html());
     } else {
         console.log(`got another request type: ${req.method}`)
         // Handle any other HTTP method
