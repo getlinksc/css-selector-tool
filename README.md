@@ -53,11 +53,11 @@ You can also try out the tool at [tools.link.sc](https://tools.link.sc)
 
 A list of things not working right now:
 
-1. ~Basic UI~
-2. ~Might not work for all websites~
-3. ~CSS Selector tool is not perfect~
-4. ~Difficult to extract link~
-5. ~Javascript rendering does not always work~
+1. UI is very basic
+2. Might not work for all websites
+3. CSS Selector tool is not perfect
+4. Difficult to extract link
+5. Javascript rendering does not always work
 
 ## Running Locally
 

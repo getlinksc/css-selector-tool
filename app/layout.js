@@ -27,7 +27,9 @@ export default function RootLayout({ children }) {
     return (
         <>
             <html lang="en" suppressHydrationWarning>
-            <head />
+            <head>
+                <script defer data-domain="tools.link.sc" src="https://analytics.pen.sh/js/script.js"></script>
+            </head>
             <body
                 className={cn(
                     "min-h-screen bg-background font-sans antialiased",
