@@ -30,13 +30,13 @@ This project as an experiment to see to speed up testing and parsing data from w
 
 ## Roadmap
 
-- [x] ~Create sudo browser~
-- [x] ~Proxy requests~
-- [x] ~Renders Javascript~
-- [x] ~Inject CSS selector tool~
-- [x] ~Pink a click css selector~
-- [x] ~HTML Parser~
-- [x] ~Extra data to tables~
+- [x] Create sudo browser
+- [x] Proxy requests
+- [x] Renders Javascript
+- [x] Inject CSS selector tool
+- [x] Pink a click css selector
+- [x] HTML Parser
+- [x] Extra data to tables
 - [x] Dark mode
 - [ ] Automatically Generate code
 - [ ] Build a better UI
