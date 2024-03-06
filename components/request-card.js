@@ -127,7 +127,7 @@ export function RequestCard({ html, setHtml, defaultLayout = [265, 440, 655]}) {
                                     className="h-full max-h-[800px] p-5"
                                     srcDoc={html}
                                     sandbox="allow-forms allow-scripts"
-                                    style={{width: "", height: "100%", resize: "both"}}
+                                    style={{resize: "both"}}
                                     onLoad={(e) => {handleiframeLoad(e)}}
                                 />
                             </div>
