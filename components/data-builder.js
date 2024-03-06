@@ -113,6 +113,22 @@ export function DataBuilder({ html, setHtml, defaultLayout = [265, 440, 755]}) {
                                             >
                                                 search
                                             </Button>
+
+                                            {/* Hide export until we have data to export */}
+                                            {
+                                                Object.keys(data).length > 0 ?
+                                                    <a
+                                                        download={"data.json"}
+                                                        href={URL.createObjectURL(new Blob([JSON.stringify(data)], { type: "application/json" }))}>
+                                                        <Button
+                                                            diabled={Object.keys(data).length > 0 ? "" : "true"}
+                                                        >
+                                                            Export JSON
+                                                        </Button>
+                                                    </a>
+                                                    :
+                                                    <></>
+                                            }
                                     </CardContent>
                                 </ScrollArea>
                             </CardContent>

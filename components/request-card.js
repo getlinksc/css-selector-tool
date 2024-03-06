@@ -134,8 +134,6 @@ export function RequestCard({ html, setHtml, defaultLayout = [265, 440, 655]}) {
                     </ScrollArea>
                 </div>
             </Card>
-            <CardContent>
-            </CardContent>
 
         </ResizablePanel>
     )
