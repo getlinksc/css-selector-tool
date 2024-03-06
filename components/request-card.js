@@ -122,12 +122,11 @@ export function RequestCard({ html, setHtml, defaultLayout = [265, 440, 655]}) {
                     </CardContent>
                     <ScrollArea className="h-screen">
                         {(html && html.length > 0) ?
-                            <div className="overflow-y-auto h-80 sm:h-auto">
+                            <div>
                                 <iframe
-                                    className="h-full max-h-[800px] p-5"
                                     srcDoc={html}
                                     sandbox="allow-forms allow-scripts"
-                                    style={{resize: "both"}}
+                                    style={{width: "850px", height:"620px", resize: "both"}}
                                     onLoad={(e) => {handleiframeLoad(e)}}
                                 />
                             </div>
