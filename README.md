@@ -78,3 +78,9 @@ cp .env.example .env.local
 ```sh
 npm dev
 ```
+
+## Stars History
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=getlinksc/css-selector-tool&type=Date)](https://star-history.com/#getlinksc/css-selector-tool&Date)

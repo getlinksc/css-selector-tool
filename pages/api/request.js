@@ -41,7 +41,7 @@ export default async function handler(req, res) {
 
             payload["user-agent"] = USER_AGENT;
             payload["method"] = "GET";
-            payload["render_js"] = true;
+            payload["render_js"] = body.render_js ? true : false;
 
             const config = {
                 "body": JSON.stringify(payload),
@@ -69,6 +69,7 @@ export default async function handler(req, res) {
 
         const html = await resp.text();
 
+        console.log(`html before: ${html.length}: ${html}`)
         // add in the query selector
         const $ = cheerio.load(html);
         // console.log(`appending selector js :${SELECTOR_JS}`)
