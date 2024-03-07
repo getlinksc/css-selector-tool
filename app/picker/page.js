@@ -20,7 +20,7 @@ export default function Picker() {
                         <div className="hidden flex-col md:flex">
                                 <ResizablePanelGroup
                                     direction="horizontal"
-                                    className="h-full max-h-[800px] items-stretch"
+                                    className="h-full resize-y overflow-hidden items-stretch"
                                 >
                                     <RequestCard html={html} setHtml={setHtml}/>
                                     <ResizableHandle withHandle/>
