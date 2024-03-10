@@ -27,6 +27,7 @@ You can also try out the tool at [tools.link.sc](https://tools.link.sc)
 ## Features
 
 - Low code
+- AI Assisted Parsing
 - Built-in browser
 - Website fetch
 - CSS selector/highlighter
@@ -46,6 +47,7 @@ You can also try out the tool at [tools.link.sc](https://tools.link.sc)
 - [x] Extra data to tables
 - [x] Dark mode
 - [x] Javascript Toggle
+- [x] Added ChatGPT
 - [ ] Automatically Generate code
 - [ ] Build a better UI
 
@@ -58,6 +60,10 @@ A list of things not working right now:
 3. CSS Selector tool is not perfect
 4. Difficult to extract link
 5. Javascript rendering does not always work
+
+## AI Assisted Parsing
+
+ChatGPT is great at extract and grabbing data. However it has a token size limit (8192). So to help break down the token size. You can select specific elements to pass into the prompt. Using CSS Selector to grab a small subset of elements to parse, allowing ChatGPT to extract data from websites.
 
 ## Running Locally
 
