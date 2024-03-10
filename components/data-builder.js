@@ -13,12 +13,13 @@ import * as cheerio from 'cheerio';
 import { PlusCircledIcon, MinusCircledIcon} from "@radix-ui/react-icons"
 import {Button} from "@/components/ui/button";
 
-export function DataBuilder({ html, setHtml, defaultLayout = [265, 440, 755]}) {
+export function DataBuilder({ html, setElements, defaultLayout = [265, 440, 755]}) {
     const [selectors, setSelectors] = useState([
         {"key": "title", "selector": ""}
     ]);
     const [hasSelectors, setHasSelectors] = useState(false);
     const [data, setData] = useState({});
+
     // check for updates to html, selectors
 
     const updateSelectorKey = (e, i) => {
@@ -46,16 +47,26 @@ export function DataBuilder({ html, setHtml, defaultLayout = [265, 440, 755]}) {
                 const selectorName = selector.key;
                 console.log(`Finding elements with selector: ${selector.selector} for : ${selectorName}`)
                 let $results = $(`${selector.selector}`);
+
+                // for prompting
+                let $elements = [];
+
                 const values = []
                 $results.each((i, e) => {
+                    $elements.push($.html(e));
+
+                    // grab text
                     let t = $(e).text();
                     console.log(t)
                     values.push(t);
                 })
+
+                setElements($elements);
+
                 setData(data => ({
                     ...data,
                     selectorName : values
-                }))
+                }));
             }
         }
     }

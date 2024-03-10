@@ -20,7 +20,7 @@ export function ResultTable({ data, defaultLayout = [265, 440, 655]}) {
                         return (
                             <>
                                 <TableHeader>
-                                    <TableRow>
+                                    <TableRow key={`${k}-header`}>
                                         <TableHead key={k} className="w-[100px]">{k.selectorName}</TableHead>
                                     </TableRow>
                                 </TableHeader>
@@ -28,8 +28,8 @@ export function ResultTable({ data, defaultLayout = [265, 440, 655]}) {
                                     {
                                         data[k].map((v, j) => {
                                             return (
-                                                <TableRow key={`${v}-${j}`}>
-                                                    <TableCell className="font-medium">{v}</TableCell>
+                                                <TableRow key={`${v}-${k}-${j}-row`}>
+                                                    <TableCell key={`${v}${k}-${j}-value`} className="font-medium">{v}</TableCell>
                                                 </TableRow>
                                             )
                                         })

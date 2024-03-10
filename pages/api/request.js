@@ -69,7 +69,7 @@ export default async function handler(req, res) {
 
         const html = await resp.text();
 
-        console.log(`html before: ${html.length}: ${html}`)
+        console.log(`html before: ${html.length}`)
         // add in the query selector
         const $ = cheerio.load(html);
         // console.log(`appending selector js :${SELECTOR_JS}`)

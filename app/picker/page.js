@@ -5,32 +5,24 @@ import {
 } from "@/components/ui/resizable"
 import { RequestCard } from "@/components/request-card"
 import { DataBuilder } from "@/components/data-builder";
-import {useState} from "react";
+import { useState } from "react";
 
 const fetchApiEndpoint = "/api/request";
 
 export default function Picker() {
     const [html, setHtml] = useState(null);
+    const [elements, setElements] = useState([])
+
     return (
         <>
-            <div className="relative flex min-h-screen flex-col bg-background">
-            <div className="container relative p-5">
-                <section>
-                    <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-xl">
-                        <div className="hidden flex-col md:flex">
-                                <ResizablePanelGroup
-                                    direction="horizontal"
-                                    className="h-full max-h-[800px] items-stretch"
-                                >
-                                    <RequestCard html={html} setHtml={setHtml}/>
-                                    <ResizableHandle withHandle/>
-                                    <DataBuilder html={html} setHtml={setHtml}/>
-                                </ResizablePanelGroup>
-                            </div>
-                        </div>
-                </section>
-            </div>
-            </div>
+            <ResizablePanelGroup
+                direction="horizontal"
+                className="h-full resize-y items-stretch"
+            >
+                <RequestCard html={html} setHtml={setHtml} elements={elements}/>
+                <ResizableHandle withHandle/>
+                <DataBuilder html={html} setHtml={setHtml} setElements={setElements}/>
+            </ResizablePanelGroup>
         </>
-)
+    )
 }
