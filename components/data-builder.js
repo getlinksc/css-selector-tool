@@ -38,6 +38,10 @@ export function DataBuilder({ html, setElements, defaultLayout = [265, 440, 755]
         setSelectors([...selectors, {"key": "", "selector": ""}])
     }
 
+    const removeSelector = (index) => {
+        setSelectors([...selectors.slice(0, index), ...selectors.splice(index+1)]);
+    }
+
     const parseForSelectors = (e) => {
         if (html){
             const $ = cheerio.load(html);
@@ -93,20 +97,30 @@ export function DataBuilder({ html, setElements, defaultLayout = [265, 440, 755]
                                     <CardContent className="grid gap-4">
                                             {selectors.map((input, index) => {
                                                 return (
-                                                    <div className="grid grid-cols-2 gap-6" key={index}>
+                                                    <div className="grid grid-cols-10 gap-1" key={index}>
                                                         <Input
+                                                            className="col-span-4"
                                                             id="key"
                                                             type="text"
                                                             placeholder={`key${index}`}
                                                             onChange={(e) => {updateSelectorKey(e, index)}}
                                                         />
                                                         <Input
+                                                            className="col-span-4"
                                                             id="selector"
                                                             type="text"
                                                             placeholder={`selector${index}`}
                                                             onChange={(e) => {updateSelectorValue(e, index)}}
                                                         />
+                                                        <Button
+                                                            className="col-span-2"
+                                                            variant="secondary"
+                                                            onClick={(e) => removeSelector(index)}
+                                                        >
+                                                            <MinusCircledIcon className="mr-2 h-4 w-4" />
+                                                        </Button>
                                                     </div>
+
                                                 )
                                             })}
                                             <Button
