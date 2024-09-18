@@ -54,7 +54,7 @@ export default async function handler(req, res) {
             res.status(400).json(resp)
         }
         // This is where the proxy request is used
-        elif (process.env.PROXY_ENDPOINT){
+        else if (process.env.PROXY_ENDPOINT){
             const payload = body;
 
             payload["user-agent"] = USER_AGENT;
