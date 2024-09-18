@@ -5,8 +5,22 @@ const PROXY_API_KEY = process.env.PROXY_API_KEY;
 
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 
+function isValidHttpUrl(string) {
+    console.log(`validating ${string}`)
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
+
 async function sendAnalytics(req){
     let body = req.body;
+    
     body["referrer"] = req.headers["referer"]
     const config = {
         headers: {
@@ -34,9 +48,13 @@ export default async function handler(req, res) {
         console.log(`got post request with body ${JSON.stringify(body)}`)
 
         let resp = null;
-
+        
+        if (isValidHttpUrl(body.url) === false){
+            resp = {"error" :"invalid url in body"}
+            res.status(400).json(resp)
+        }
         // This is where the proxy request is used
-        if (process.env.PROXY_ENDPOINT){
+        elif (process.env.PROXY_ENDPOINT){
             const payload = body;
 
             payload["user-agent"] = USER_AGENT;
